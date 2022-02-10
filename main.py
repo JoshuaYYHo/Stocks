@@ -1,9 +1,21 @@
+#packages
 import yfinance as yf
-from get_all_tickers import get_tickers as gt
+from pandas import DataFrame as df
+import matplotlib.pyplot as pyplot
 
-list_tickers = gt.get_tickers()
-print(list_tickers)
+#maybe use TKinter after this
+
+
 #this is an object
-msft = yf.Ticker("MSFT")
+symbol = yf.Ticker("MSFT")
+infos = symbol.info
+#pandas data frame
+bro = yf.download('MSFT', '2002-01-01', '2022-01-01')
 
-print(msft.info)
+open_bro = bro["Open"]
+
+pyplot.plot(open_bro)
+pyplot.xlabel("Open")
+pyplot.show()
+
+print(open_bro)
